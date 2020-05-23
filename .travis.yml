@@ -5,6 +5,8 @@ services:
 env:
   global:
     - SHA=$(git rev-parse HEAD)
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 deploy:
   provider: script
   script: bash ./deploy.sh
