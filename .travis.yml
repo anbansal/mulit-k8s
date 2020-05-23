@@ -6,7 +6,7 @@ env:
   global:
     - SHA=$(git rev-parse HEAD)
 before_install:
-    - docker build -t ankurbnsl8099/docker_react -f Dockerfile.dev .
+    - docker build -t ankurbnsl8099/docker_react -f ./client/Dockerfile.dev ./client
 script:
     - docker run -e CI=true ankurbnsl8099/docker_react npm run test
 after_success:
